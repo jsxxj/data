@@ -13,22 +13,24 @@ import os
 
 files = os.listdir('E:\\5')
 for f in files:
-    fname = os.path.splitext(f)
-    data = np.empty((40,36))
-    data = np.loadtxt(f)
-    '''添加噪声'''
-    #noise = np.random.normal(2,0.5,(40,36))
-    #dataNoise = data + noise
-    #np.savetxt('1.txt',dataNoise,fmt=['%s']*dataNoise.shape[1],newline='\n')
-    '''print dataNoise'''
-    img = Image.fromarray(data)
-    if (img.mode!='L'):
-        img = img.convert('L')
-    imgPath = os.getcwd()+'\\'+'Pictures'
-    if (os.path.exists(imgPath)==False):
-        os.mkdir(imgPath)
-    imgName = str(int(fname[0]))+'.bmp'
-    #imgName = '1'+'_'+str(int(fname[0]))+'.bmp'
-    img.save(imgPath + '\\' +imgName)
+    if not os.path.isdir(f):
+        '''不是文件夹才进行如下操作'''
+        fname = os.path.splitext(f)
+        data = np.empty((40,36))
+        data = np.loadtxt(f)
+        '''添加噪声'''
+        #noise = np.random.normal(2,0.5,(40,36))
+        #dataNoise = data + noise
+        #np.savetxt('1.txt',dataNoise,fmt=['%s']*dataNoise.shape[1],newline='\n')
+        '''print dataNoise'''
+        img = Image.fromarray(data)
+        if (img.mode!='L'):
+            img = img.convert('L')
+        imgPath = os.getcwd()+'\\'+'Pictures'
+        if (os.path.exists(imgPath)==False):
+            os.mkdir(imgPath)
+        imgName = str(int(fname[0]))+'.bmp'
+        #imgName = '1'+'_'+str(int(fname[0]))+'.bmp'
+        img.save(imgPath + '\\' +imgName)
 
 print 'Done'
