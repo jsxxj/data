@@ -3,6 +3,8 @@
 Created on Mon Oct 30 16:36:07 2017
 
 @author: jsx
+图片压缩
+
 """
 # -*- coding:utf-8 -*-
 from PIL import Image
