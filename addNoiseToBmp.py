@@ -22,14 +22,17 @@ def process_file(filePath):
         img = Image.fromarray(data)
         if (img.mode!='L'):
             img = img.convert('L')
+        '''修改文件名
         newName = int(fname[0].split('_')[0])+1
         imgName = str(newName)+'_' + fname[0].split('_')[1] + '.bmp'
+        '''
         newImgPath = os.getcwd()+"\\"+"newExpandImage"
         if (os.path.exists(newImgPath)):
             pass
         else:
             os.mkdir(newImgPath)
-        img.save(newImgPath+"\\"+file)
+        img.save(newImgPath+"\\"+file) #按照原文件名保存
+        #img.save(newImgPath+"\\"+imgName)  按照新文件名保存
         
         
         
